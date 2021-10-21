@@ -1,5 +1,6 @@
 -Subir todor os container  docker-compose up -d
 -Listar os container em execução  docker ps
+-Derruba os container docker-compose down
 -Acessar o workspace do projeto nos container  docker-compose exec
           "nome do container  informado no arquivo docker-compose.yml" bash
 

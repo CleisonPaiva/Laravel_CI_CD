@@ -3,7 +3,7 @@ services:
     # image project
     # api_cache e o nome do container com o serviço
     # se mudar o nome "docker/nginx/laravel.conf" deve-se acessar e mudar o nome em  " fastcgi_pass api_cache:"
-    api_cache:
+    api_cache_laravel:
         build:
             args:
                 user: cleison
@@ -19,7 +19,7 @@ services:
             - redis
             - queue
         networks:
-            - container
+            - api_cache
 
     # nginx
     nginx:
@@ -31,7 +31,7 @@ services:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
-            - container
+            - api_cache
 
     # db mysql
     mysql:
@@ -47,7 +47,7 @@ services:
         ports:
             - 3388:3306
         networks:
-            - container
+            - api_cache
 
     # queue
     queue:
@@ -64,14 +64,14 @@ services:
         depends_on:
             - redis
         networks:
-            - container
+            - api_cache
 
     # redis
     redis:
         image: redis:latest
         networks:
-            - container
+            - api_cache
 
 networks:
-    container:
+    api_cache:
         driver: bridge
