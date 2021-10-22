@@ -23,4 +23,9 @@ class CourseService
     {
         return $this -> repository -> storeNewCourse($data);
     }
+
+    public function getCourse( string $uuid )
+    {
+        return $this -> repository -> getCourseByUuid($uuid);
+    }
 }
