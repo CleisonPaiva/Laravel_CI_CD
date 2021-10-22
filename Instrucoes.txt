@@ -23,3 +23,7 @@ Deve-se executar docker-compose exec api_cache bash
 ================================================================
 php artisan make:controller Api/CourseController --resource --model=Course --api
 php artisan make:migrate create_courses_table
+php artisan make:resource CourseResource  ->  return CourseResource::collection($courses);
+-------------------------------------------------------------------------
+php artisan make:observer CourseObserver --model=Course
+Cria um observer vinculado ao model de Course para preencher automaticamente o uuid

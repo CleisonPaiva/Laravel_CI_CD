@@ -3,11 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseRequest;
+use App\Http\Resources\CourseResource;
 use App\Models\Course;
+use App\Services\CourseService;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    protected $courseService;
+
+    public function __construct(CourseService $courseService ){
+        $this->courseService = $courseService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+       $courses=$this->courseService->getCoursesAll();
+
+        return CourseResource::collection($courses);
     }
 
     /**
@@ -24,9 +35,13 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        //
+
+        $course=$this->courseService->storeNewCourse($request->validated());
+
+        return new CourseResource($course);
+        //Por default o resource retorna um status code de 201(created).
     }
 
     /**
@@ -47,7 +62,7 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(CourseRequest $request, Course $course)
     {
         //
     }

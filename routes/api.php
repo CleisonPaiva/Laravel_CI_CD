@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\{
+    CourseController
+};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-
+Route::apiResource('/courses',CourseController::class);
 
 Route::get('/', function () {
     return response()->json(['message'=>'ok']);
