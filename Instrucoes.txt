@@ -18,3 +18,8 @@ Deve-se executar docker-compose exec api_cache bash
 ------------------------------------------------------------
 
 -Sempre executar os comandos laravel dentro do workspace
+
+
+================================================================
+php artisan make:controller Api/CourseController --resource --model=Course --api
+php artisan make:migrate create_courses_table
