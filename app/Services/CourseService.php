@@ -21,6 +21,21 @@ class CourseService
 
     public function storeNewCourse( array $data )
     {
-        return $this -> repository -> storeNewCourse($data);
+        return $this -> repository -> storeNewCourse( $data );
+    }
+
+    public function getCourse( string $uuid )
+    {
+        return $this -> repository -> getCourseByUuid( $uuid );
+    }
+
+    public function deleteCourse( string $uuid )
+    {
+        return $this -> repository -> deleteCourseByUuid( $uuid );
+    }
+
+    public function updateCourse( string $uuid,array $data )
+    {
+        return $this -> repository -> updateCourseByUuid( $uuid, $data );
     }
 }

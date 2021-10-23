@@ -32,17 +32,17 @@ class CourseResource extends JsonResource
         // ou formatar campos de data com o Carvon como no exemplo abaixo
         //Exemplo :
         // "data": {
-        //         "uui": "a78e1bf7-327b-4702-bbac-243800179df8",
+        //         "uuid": "a78e1bf7-327b-4702-bbac-243800179df8",
         //        "name": "Curso 5",
         //        "description": "Descrição curso 5",
         //        "date": "22-10-2021
         //  }
 
         return[
-           'uui'=>$this->uuid,
+           'uuid'=>$this->uuid,
            'name'=>$this->name,
            'description'=>$this->description,
-            'date'=>Carbon::make($this->created_at)->format('d-m-Y')
+           'date'=>Carbon::make($this->created_at)->format('d-m-Y')
         ];
     }
 }
