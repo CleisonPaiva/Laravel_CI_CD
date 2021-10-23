@@ -13,4 +13,9 @@ class Course extends Model
         'name',
         'description',
     ];
+
+    public function modules(  )
+    {
+        return $this->HasMany( Module::class);
+    }
 }

@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\{
-    CourseController
-};
+    CourseController,
+    LessonController,
+    ModuleController};
 
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+Route::apiResource('/modules/{module}/lessons', LessonController::class);
+
+Route::apiResource('/courses/{course}/modules', ModuleController::class);
 
 Route::apiResource('/courses',CourseController::class);
 
