@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Lesson;
+use Illuminate\Support\Facades\Cache;
 
 class LessonRepository
 {
@@ -48,7 +49,8 @@ class LessonRepository
 
         $data['module_id'] = $moduleId;
 
-//        Cache::forget('courses');
+//        Remove do Cache
+        Cache::forget('courses');
 
         return $lesson->update($data);
     }
@@ -57,7 +59,8 @@ class LessonRepository
     {
         $lesson = $this->getLessonByUuid($identify);
 
-//        Cache::forget('courses');
+//        Remove do Cache
+        Cache::forget('courses');
 
         return $lesson->delete();
     }

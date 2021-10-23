@@ -47,6 +47,7 @@ class ModuleRepository
     {
         $module = $this->getModuleByUuid($uuid);
 
+        //        Remove do Cache
         Cache::forget('courses');
 
         $data['course_id'] = $courseId;
@@ -59,6 +60,7 @@ class ModuleRepository
     {
         $module = $this->getModuleByUuid($uuid);
 
+        //        Remove do Cache
         Cache::forget('courses');
 
         return $module->delete();
