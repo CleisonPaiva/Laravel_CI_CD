@@ -27,3 +27,7 @@ php artisan make:resource CourseResource  ->  return CourseResource::collection(
 -------------------------------------------------------------------------
 php artisan make:observer CourseObserver --model=Course
 Cria um observer vinculado ao model de Course para preencher automaticamente o uuid
+
+-----------------------------------------------------------------------
+Update
+ Enviar dados por param

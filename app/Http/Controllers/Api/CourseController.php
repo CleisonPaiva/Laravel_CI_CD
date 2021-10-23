@@ -63,12 +63,14 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Course $course
+     * @param String $uuid
      * @return \Illuminate\Http\Response
      */
-    public function update( CourseRequest $request, Course $course )
+    public function update( CourseRequest $request, $uuid )
     {
-        //
+        $this->courseService->updateCourse($uuid, $request->validated());
+
+        return response()->json(['message' => 'updated']);
     }
 
     /**

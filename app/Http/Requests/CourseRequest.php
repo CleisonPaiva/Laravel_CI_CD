@@ -24,7 +24,7 @@ class CourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required', 'min:3','max:255','unique:courses'],
+            'name'=>['required','min:3','max:255','unique:courses'],
             'description'=>['nullable', 'min:3','max:9999'],
         ];
     }
