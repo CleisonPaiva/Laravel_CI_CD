@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Course;
+use Illuminate\Support\Facades\Cache;
 
 class CourseRepository
 {
@@ -15,7 +16,19 @@ class CourseRepository
 
     public function getCoursesAll()
     {
-        return $this -> entity ->with('modules.lessons')-> get();
+        //Armazena o cache por 60 segundos
+         return Cache::remember('courses', 60, function () {
+             return $this->entity
+                     ->with('modules.lessons')
+                     ->get();
+         });
+
+        //Armazena o cache para sempre
+//        return Cache::rememberForever('courses', function () {
+//            return $this->entity
+//                ->with('modules.lessons')
+//                ->get();
+//        });
     }
 
     public function storeNewCourse( array $data )
@@ -38,6 +51,9 @@ class CourseRepository
     {
         //Reaproveito o metodo getCourseByUuid() para pegar o curso
         $course = $this -> getCourseByUuid( $uuid ,false);
+
+//        Remove do Cache
+        Cache::forget('courses');
         return $course -> delete();
     }
 
@@ -45,6 +61,9 @@ class CourseRepository
     {
         //Reaproveito o metodo getCourseByUuid() para pegar o curs
         $course = $this -> getCourseByUuid( $uuid ,false);
+
+        //        Remove do Cache
+        Cache::forget('courses');
         return $course -> update($data);
     }
 }
