@@ -42,7 +42,11 @@ class CourseResource extends JsonResource
            'uuid'=>$this->uuid,
            'name'=>$this->name,
            'description'=>$this->description,
-           'date'=>Carbon::make($this->created_at)->format('d-m-Y')
+           'date'=>Carbon::make($this->created_at)->format('d-m-Y'),
+             //Retorna a relação de Cursos e Modulos - Evitar esse tipo / Faz muitas querys
+//            'modules' => ModuleResource::collection($this->modules)
+
+            'modules' => ModuleResource::collection($this->whenLoaded('modules'))
         ];
     }
 }
