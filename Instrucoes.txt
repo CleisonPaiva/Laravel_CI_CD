@@ -26,6 +26,7 @@ php artisan make:migration create_courses_table
 php artisan make:resource CourseResource  ->  return CourseResource::collection($courses);
 php artisan make:factory CourseFactory --model=Course
 php artisan make:test CourseTest
+Run tests => php artisan test
 
 -------------------------------------------------------------------------
 php artisan make:observer CourseObserver --model=Course
@@ -34,3 +35,8 @@ Cria um observer vinculado ao model de Course para preencher automaticamente o u
 -----------------------------------------------------------------------
 Update
  Enviar dados por param
+
+
+
+ test_validations_create_course
+ validade os campos
