@@ -64,4 +64,5 @@ jobs:
             cd ci-cd/
             echo $USER_PASS | sudo -S docker-compose up -d
             echo $USER_PASS | sudo -S docker-compose exec -T api_cache_laravel composer install
+            echo $USER_PASS | sudo -S docker-compose exec -T api_cache_laravel php artisan key:generate
             echo $USER_PASS | sudo -S docker-compose exec -T api_cache_laravel php artisan migrate --force
