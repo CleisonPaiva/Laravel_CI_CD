@@ -26,29 +26,28 @@ services:
         image: nginx:alpine
         restart: unless-stopped
         ports:
-            - 80:80
-            - 443:443
+            - 8789:80
         volumes:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
             - api_cache
 
-#    # db mysql
-#    mysql:
-#        image: mysql:5.7.22
-#        restart: unless-stopped
-#        environment:
-#            MYSQL_DATABASE: ${DB_DATABASE}
-#            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-#            MYSQL_PASSWORD: ${DB_PASSWORD}
-#            MYSQL_USER: ${DB_USERNAME}
-#        volumes:
-#            - ./.docker/mysql/dbdata:/var/lib/mysql
-#        ports:
-#            - 3388:3306
-#        networks:
-#            - api_cache
+    # db mysql
+    mysql:
+        image: mysql:5.7.22
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        volumes:
+            - ./.docker/mysql/dbdata:/var/lib/mysql
+        ports:
+            - 3388:3306
+        networks:
+            - api_cache
 
     # queue
     queue:
