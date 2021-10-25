@@ -23,12 +23,7 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
-  laravel-tests2:
-    name: Execute Tests
-    needs: laravel-tests
-    runs-on: ubuntu-latest
 
-    steps:
       - name: Create Database
         run: |
           mkdir -p database
