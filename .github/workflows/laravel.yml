@@ -25,6 +25,7 @@ jobs:
 
   laravel-tests2:
     name: Execute Tests
+    needs: laravel-tests
     runs-on: ubuntu-latest
     steps:
       - name: Create Database
